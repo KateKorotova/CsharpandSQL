@@ -15,11 +15,12 @@ namespace WorkwithDB
     {
         MySelect select = new MySelect();
         string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sanya\source\repos\WorkwithDB\WorkwithDB\MyDatabase.mdf;Integrated Security=True";
-
+        int scr_val; 
 
         public frmMain()
         {
             InitializeComponent();
+            scr_val = 0;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -45,6 +46,7 @@ namespace WorkwithDB
             for (int i = 0; i < column; i++)
             {
                 dataGrid.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGrid.Columns[i].HeaderCell.Style.Font = new Font("Tahoma", 9, FontStyle.Bold);
             }
         }
 
@@ -61,7 +63,7 @@ namespace WorkwithDB
             }
             if ((text != "Количество") && (text != "Сумма"))
             {
-                dataGrid.Columns[e.ColumnIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                dataGrid.Columns[e.ColumnIndex].DefaultCellStyle.BackColor = Color.Bisque;
                 select.names.Add(dataGrid.Columns[e.ColumnIndex].HeaderText);
                 select.selectedcolumns.Add(e.ColumnIndex);
             }
@@ -94,6 +96,11 @@ namespace WorkwithDB
         {
             select = new MySelect();
             load(select.standartquery());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
